@@ -13,6 +13,22 @@
     <!-- Whether to use voip audio mode for ims call -->
     <bool name="config_use_voip_mode_for_ims">true</bool>
 
+        <!-- Optional IPsec algorithms enabled by this device, defaulting to empty. OEMs can override
+         it by providing a list of algorithm names in an overlay config.xml file.
+
+         As Android releases new versions, more algorithms are becoming mandatory. Mandatory
+         algorithms will be automatically enabled on the device. Optional algorithms need
+         to be explicitly declared in this resource to be enabled.
+             * SDK level 28 makes the following algorithms mandatory : "cbc(aes)", "hmac(md5)",
+               "hmac(sha1)", "hmac(sha256)", "hmac(sha384)", "hmac(sha512)", "rfc4106(gcm(aes))"
+             * SDK level 31 makes the following algorithms mandatory : "rfc3686(ctr(aes))",
+               "xcbc(aes)", "cmac(aes)", "rfc7539esp(chacha20,poly1305)"
+     -->
+    <string-array name="config_optionalIpSecAlgorithms">
+        <item>xcbc(aes)</item>
+        <item>rfc3686(ctr(aes))</item>
+    </string-array>
+
     <!-- List of system components which are allowed to receive ServiceState entries in an
          un-sanitized form, even if the location toggle is off. This is intended ONLY for system
          components, such as the telephony stack, which require access to the full ServiceState for
